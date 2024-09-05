@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx2kphestwyfl"]
+
+[ext_resource type="Texture2D" uid="uid://dle8dv18i3nc5" path="res://UI/Dialog_box.png" id="1_6nr8c"]
+[ext_resource type="Script" path="res://UI/dialog_box.gd" id="1_cktab"]
+
+[node name="Dialog_Box" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cktab")
+
+[node name="Body_NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 425.0
+offset_right = 1128.0
+offset_bottom = 606.0
+texture = ExtResource("1_6nr8c")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Body_NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 37.0
+offset_right = -26.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Test" type="Label" parent="Body_NinePatchRect/MarginContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_vertical = 1
+autowrap_mode = 1
+
+[node name="Name_NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 396.0
+offset_right = 346.0
+offset_bottom = 458.0
+texture = ExtResource("1_6nr8c")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Name_NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Label" parent="Name_NinePatchRect/MarginContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+autowrap_mode = 1

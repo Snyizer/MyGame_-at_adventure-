@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://b30grfhncooda"]
+
+[ext_resource type="Texture2D" uid="uid://0yonwkj7e7kk" path="res://Textures/Room_1/Room_01.png" id="1_3u2uh"]
+[ext_resource type="PackedScene" uid="uid://dq4kwytxhacqt" path="res://Player/Player.tscn" id="1_4gufx"]
+[ext_resource type="Texture2D" uid="uid://cvv0hbf45eynu" path="res://Textures/Room_1/sp.png" id="3_otakq"]
+[ext_resource type="Texture2D" uid="uid://nk7ogop0we1l" path="res://Textures/Room_1/table.png" id="4_hthjg"]
+[ext_resource type="Script" path="res://Scripts/perexod.gd" id="5_obw8e"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ue1v2"]
+vertices = PackedVector2Array(792, 320, 791, 518, 791, 517, 337, 559, 367, 570, 259, 573, 281, 563, 257, 427, 281, 485, 405, 425, 335, 477, 374, 514, 629, 522, 639, 281, 649, 347, 652, 471, 797, 272, 792, 319, 764, 317, 735, 310, 715, 377, 760, 529, 787, 544, 692, 544, 730, 527, 687, 514, 705, 474, 654, 517, 399, 202, 639, 199)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(6, 5, 7, 8), PackedInt32Array(8, 7, 9, 10), PackedInt32Array(11, 4, 3, 10), PackedInt32Array(12, 11, 10, 9, 13, 14, 15), PackedInt32Array(13, 16, 17, 18, 19), PackedInt32Array(19, 20, 14, 13), PackedInt32Array(21, 18, 17, 0, 2, 22), PackedInt32Array(21, 22, 23, 24), PackedInt32Array(24, 23, 25, 26), PackedInt32Array(15, 26, 25, 27), PackedInt32Array(9, 28, 29, 13), PackedInt32Array(12, 15, 27)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(250, 584, 377, 580, 383, 524, 631, 533, 656, 527, 679, 525, 684, 554, 796, 555, 801, 518, 802, 320, 809, 262, 649, 270, 649, 189, 389, 193, 395, 415, 247, 418), PackedVector2Array(291, 552, 291, 494, 325, 489, 327, 550), PackedVector2Array(659, 363, 722, 391, 742, 322, 754, 325, 750, 518, 737, 517, 712, 465, 662, 462)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_khal2"]
+size = Vector2(95, 205)
+
+[node name="Room_01" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_ue1v2")
+metadata/_edit_lock_ = true
+
+[node name="YSort" type="Node2D" parent="."]
+y_sort_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="Table" type="Sprite2D" parent="YSort"]
+position = Vector2(749.5, 489.065)
+scale = Vector2(3.09836, 3.09836)
+texture = ExtResource("4_hthjg")
+offset = Vector2(0, -25)
+metadata/_edit_lock_ = true
+
+[node name="Sp" type="Sprite2D" parent="YSort"]
+position = Vector2(302, 489)
+scale = Vector2(3.10416, 3.10416)
+texture = ExtResource("3_otakq")
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="YSort" instance=ExtResource("1_4gufx")]
+position = Vector2(467, 243)
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="Room01" type="Sprite2D" parent="Environment"]
+z_index = -1
+position = Vector2(536, 323)
+scale = Vector2(3.075, 3.075)
+texture = ExtResource("1_3u2uh")
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("5_obw8e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(684.5, 179.5)
+shape = SubResource("RectangleShape2D_khal2")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
+[connection signal="input_event" from="Area2D" to="Area2D" method="_on_input_event"]
