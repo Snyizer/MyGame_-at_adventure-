@@ -17,7 +17,6 @@ func _ready():
 	nav.set_target_position(global_position)
 
 func _process(_delta):
-	
 	if Input.is_action_just_pressed("ui_leftMouseClick") and SignalBas.Block:
 		nav.set_target_position(get_global_mouse_position())
 		nav.set_target_position(nav.get_final_position())

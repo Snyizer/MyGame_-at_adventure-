@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmlyhirmsjkn4"]
+[gd_scene load_steps=8 format=3 uid="uid://bmlyhirmsjkn4"]
 
+[ext_resource type="Script" path="res://Scripts/Bar_02.gd" id="1_ookbf"]
 [ext_resource type="Texture2D" uid="uid://d077qywjpyon1" path="res://Textures/Bar_02/BAR_01.png" id="1_t00ym"]
 [ext_resource type="PackedScene" uid="uid://dq4kwytxhacqt" path="res://Player/Player.tscn" id="1_wyjtt"]
+[ext_resource type="PackedScene" uid="uid://d316df1i8m7dv" path="res://UI/pause_menu.tscn" id="3_fwqim"]
+[ext_resource type="PackedScene" uid="uid://cx2kphestwyfl" path="res://UI/dialog_box.tscn" id="4_cjoau"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2t3t3"]
 vertices = PackedVector2Array(613, 895, 749, 917, 748, 917, -161, 727, -75, 785, -757, 775, -760, 736, -85, 525, -129, 520, -164, 485, -131, 427, -808, 428, -762, 479, 594, 1004, 594, 1132, 504, 1110, 506, 984, 910, 921, 1059, 887, 1062, 1135, 904, 1128, 907, 968, 828, 939, 816, 958, 1055, 351, 1067, 408, 1066, 533, 903, 517, 901, 384, 938, 300, 1066, 534, 1072, 639, 529, 628, 598, 521, -75, 1205, -74, 1226, -333, 1222, -335, 1201, 806, 385, 806, 418, 708, 418, 709, 383, 716, 322, 774, 280, 363, 366, 280, 366, 282, 289, 459, 277, 523, 329, 189, 1091, 141, 1134, 40, 1133, 36, 929, 193, 995, 885, 202, 856, 366, 783, 205, -874, 289, -864, 199, -360, 197, -811, 285, 673, 332, 658, 371, 637, 318, 613, 387, 562, 328, 801, 996, 740, 995, 720, 946, 650, 946, 566, 831, 427, 953, 375, 857, -298, 289, -303, 264, -303, 215, -286, 193, 441, 199, 370, 973, 362, 997, 311, 997, 302, 960, 612, 415, 597, 419, 268, 929, 288, 865, 233, 957, 583, 293, 624, 292, -346, 264, -339, 215, -790, 1172, -374, 1184, -362, 1251, -810, 1251, -837, 1228, -837, 893, -783, 890, -863, 856, -851, 823, -861, 370, -859, 326, -360, 288)
@@ -9,7 +12,11 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(
 outlines = Array[PackedVector2Array]([PackedVector2Array(608, 511, 893, 507, 891, 391, 856, 377, 816, 392, 816, 428, 698, 428, 699, 391, 659, 381, 623, 394, 622, 424, 607, 427), PackedVector2Array(-874, 190, -357, 187, -335, 205, -308, 205, -292, 183, 450, 190, 468, 271, 526, 319, 556, 318, 578, 284, 630, 282, 644, 310, 674, 322, 712, 313, 765, 274, 775, 196, 892, 192, 945, 292, 1065, 345, 1077, 406, 1076, 533, 1076, 533, 1083, 650, 541, 638, 575, 827, 619, 886, 751, 907, 828, 929, 908, 911, 1069, 875, 1073, 1146, 894, 1138, 897, 977, 823, 969, 808, 1007, 734, 1005, 713, 956, 654, 956, 604, 1008, 605, 1145, 494, 1119, 496, 991, 427, 964, 378, 981, 369, 1007, 303, 1008, 294, 970, 237, 967, 203, 999, 199, 1096, 145, 1145, 31, 1143, 26, 920, 261, 919, 280, 856, 365, 848, 353, 376, 270, 376, 272, 299, -306, 299, -311, 274, -340, 274, -354, 299, -801, 295, -798, 418, -122, 417, -119, 511, -76, 516, -65, 796, -749, 785, -773, 891, -780, 1162, -373, 1175, -333, 1191, -66, 1196, -64, 1237, -329, 1232, -359, 1262, -814, 1261, -848, 1233, -847, 896, -874, 858, -861, 821, -871, 370, -869, 328, -885, 291), PackedVector2Array(-171, 717, -174, 495, -752, 489, -750, 726)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_d8dco"]
+radius = 59.0085
+
 [node name="Bar_02" type="Node2D"]
+script = ExtResource("1_ookbf")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_2t3t3")
@@ -25,7 +32,30 @@ texture = ExtResource("1_t00ym")
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="YSort_Map" instance=ExtResource("1_wyjtt")]
-position = Vector2(1004, 482)
+position = Vector2(1026, 482)
 
 [node name="Camera2D" type="Camera2D" parent="YSort_Map/Player"]
+process_callback = 0
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
 metadata/_edit_lock_ = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Dialog_Box" parent="UI" instance=ExtResource("4_cjoau")]
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("3_fwqim")]
+
+[node name="Interaction" type="Node2D" parent="."]
+
+[node name="Move_Room" type="Area2D" parent="Interaction"]
+position = Vector2(1087, 480)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction/Move_Room"]
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_d8dco")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="Interaction/Move_Room" to="." method="_on_move_room_body_entered"]
+[connection signal="input_event" from="Interaction/Move_Room" to="." method="_on_move_room_input_event"]

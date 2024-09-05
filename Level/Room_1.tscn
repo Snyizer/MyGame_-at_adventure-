@@ -66,18 +66,9 @@ metadata/_edit_lock_ = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="UI" instance=ExtResource("6_hhrt6")]
-offset_left = 3.0
-offset_top = 1.0
-offset_right = -1.0
-metadata/_edit_lock_ = true
-
 [node name="Dialog_Box" parent="UI" instance=ExtResource("7_y7d3c")]
-offset_left = -3.0
-offset_top = -1.0
-offset_right = -3.0
-offset_bottom = -1.0
-metadata/_edit_lock_ = true
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("6_hhrt6")]
 
 [node name="Interaction" type="Node2D" parent="."]
 metadata/_edit_lock_ = true

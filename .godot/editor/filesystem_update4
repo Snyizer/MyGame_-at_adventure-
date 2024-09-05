@@ -1,3 +1,6 @@
 res://Level/Room_1.tscn
 res://Level/Bar_02.tscn
 res://Player/Player.tscn
+res://Scripts/Bar_02.gd
+res://Player/Player_sript.gd
+res://Scripts/Room_1.gd
