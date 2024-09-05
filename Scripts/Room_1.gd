@@ -2,13 +2,14 @@ extends Node2D
 
 
 func _ready():
+	SignalBas.Block = true
 	SignalBas.Test_file = SignalBas.load_json_file( "res://Texst/Texst_1.json")
 
 
 #---------------Переход в бар ----------------
 func _on_area_2d_body_entered(_body):
 	var node = get_node("YSort_Map/Player")
-	if node.interaction:
+	if node.interaction and node.interaction_obj == $Interaction/Move_Bar.global_position:
 		call_deferred("_change_scene")
 
 
@@ -27,7 +28,7 @@ func _change_scene():
 #---------------Посмотреть на дверь  ----------------
 func _on_door_body_entered(_body):
 	var node = get_node("YSort_Map/Player")
-	if node.interaction:
+	if node.interaction and node.interaction_obj == $Interaction/Door.global_position:
 		$UI/Dialog_Box.TextOutput(SignalBas.Test_file["door"])
 
 

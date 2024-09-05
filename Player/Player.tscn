@@ -292,7 +292,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Side",
-"speed": 6.0
+"speed": 9.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0onm3"]
@@ -306,15 +306,16 @@ script = ExtResource("1_1ccn8")
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2, 0)
+position = Vector2(-2, -31)
 scale = Vector2(2.755, 2.755)
 sprite_frames = SubResource("SpriteFrames_ksn00")
 animation = &"Idle"
 autoplay = "Idle"
-metadata/_edit_lock_ = true
+frame = 7
+frame_progress = 0.838078
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 1)
+position = Vector2(-1, -7)
 shape = SubResource("CapsuleShape2D_0onm3")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

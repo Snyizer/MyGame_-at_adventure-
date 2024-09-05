@@ -13,8 +13,6 @@ var interaction_obj = Vector2()
 
 
 func _ready():
-	SignalBas.Block = true
-	
 	interaction = false
 	nav.set_target_position(global_position)
 
